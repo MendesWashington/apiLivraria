@@ -5,12 +5,12 @@
 # Projeto em Nodejs para controlo de uma livraria.
 
 ### O usuário deve poder se cadastrar na aplicação.
-´´´
-Post:
-http://localhost:3000/user
-´´´
+```
+post:
+$ http://localhost:3000/user
+```
 ### O usuário deve posder alterar seus dados.
-´´´
+```
 update:
-http://localhost:3000/user
-´´´
+$ http://localhost:3000/user
+```
