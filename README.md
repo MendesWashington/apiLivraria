@@ -9,6 +9,15 @@
 post:
 $ http://localhost:3000/user
 ```
+### A aplicação deve poder listar todos os usuários
+```
+get
+$ http://localhost:3000/user
+```
+### A aplicação deve poder listar um usuário pelo id
+```
+get/:user_id
+$ http
 ### O usuário deve posder alterar seus dados.
 ```
 update:
