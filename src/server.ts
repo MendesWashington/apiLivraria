@@ -1,28 +1,23 @@
+import "reflect-metadata"
 import express from "express";
-import { userRouter } from "routers/userRouter";
-import { v4 as uuidv4} from "uuid";
+import { AppDataSource } from "./database/data-source";
+import { userRouter } from "./routers/userRouter";
 
-const app = express();
-const PORT = 3000;
+const port = 3000;
 
-app.use(express.json());
+AppDataSource.initialize().then(() => {
+  
+  const app = express();
+  
+  app.use(express.json());
+  
+  app.use('/registeruser', userRouter)
 
-/* interface IUser {
-  id: string;
-  name: string;
-  lastname: string;
-  cpf?: string;
-} */
+  app.listen(port, () => {
+    console.log(`http://localhost:${port}`);
+  });
 
-type IUser = {
-  id: string;
-  name: string;
-  lastname: string;
-  cpf?: string;
-}
-
-app.use('/registeruser', userRouter)
-
-app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
+}).catch((err) => {
+  console.error(`Error during Data source initialization ${err}`);
+  
+})
